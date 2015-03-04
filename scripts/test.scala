@@ -1,5 +1,5 @@
 #!/bin/bash
-: //; exec scala -savecompiled -classpath "$(f="$0"; while [ -L $f ]; do f=$(readlink "$f"); done; cd -P "$(dirname "$f")" && while [ ! -d target/lib -a $PWD != / ]; do cd ..; done; pwd -P)/target/lib/*" "$0" "$@" # -*- scala -*-
+exec scala -savecompiled -classpath "$(f="$0"; while [ -L $f ]; do cd -P "$(dirname "$f")" && f=$(readlink "$f"); done && cd -P "$(dirname "$f")" && while [ ! -d target/lib -a $PWD != / ]; do cd ..; done; pwd)/target/lib/*" "$0" "$@" # -*- scala -*-
 !#
 
 def urlses(cl: ClassLoader): Array[java.net.URL] = cl match {

@@ -6,7 +6,8 @@ settings(
   scalaSource in Compile := baseDirectory.value / "src",
   scalaVersion := "2.11.5",
   exportJars := true,
-  artifactPath in Compile in packageBin <<= baseDirectory { base => base / "target" / "lib" / "scalatest.jar" }
+  artifactPath in Compile in packageBin <<= baseDirectory { base => base / "target" / "lib" / "scalatest.jar" },
+  libraryDependencies += "com.github.samtools" % "htsjdk" % "1.129"
 )
 
 TaskKey[Set[File]]("copy-libs") <<= (fullClasspath in Runtime, target) map { (cp, out) =>
